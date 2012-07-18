@@ -1,0 +1,7 @@
+include AUTHORS.rst
+include CHANGELOG.rst
+include LICENSE
+include README.rst
+recursive-include jmbo_facebook/migrations *
+recursive-include jmbo_facebook/templates *
+recursive-include jmbo_facebook/templatetags *
