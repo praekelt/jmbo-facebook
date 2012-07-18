@@ -20,7 +20,7 @@ class FacebookOauthUrlNode(template.Node):
         path_info = context['request'].META['PATH_INFO']
         di = dict(
             redirect_uri=urllib.quote(
-                '%s://%s%sjmbo-facebook-handler' % (protocol, site.domain, path_info)
+                '%s://%s%sadmin/jmbo_facebook/page/handler' % (protocol, site.domain, path_info)
             ),
             client_id=settings.JMBO_FACEBOOK['app_id']
         )
