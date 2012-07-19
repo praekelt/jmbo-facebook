@@ -1,0 +1,10 @@
+{% load i18n jmbo_template_tags jmbo_twitter_tags %}
+
+<div class="meta">
+    <div class="byline">
+        {% humanize_time_diff object.created_time _('ago') %}
+    </div>
+    <div class="description">
+        {{ object.message|safe }}
+    </div>        
+</div>
