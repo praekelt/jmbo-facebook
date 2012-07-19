@@ -24,7 +24,7 @@ def handler(request):
     protocol = 'http%s' % (request.is_secure() and 's' or '')
     di = dict(
         redirect_uri=urllib.quote(
-            '%s://%s%shandler' % (protocol, site.domain, path_info)
+            '%s://%s/admin/jmbo_facebook/handler' % (protocol, site.domain)
         ),
         client_id=settings.JMBO_FACEBOOK['app_id'],
         client_secret=settings.JMBO_FACEBOOK['app_secret'],
