@@ -1,9 +1,11 @@
+import urllib
 import urllib2
 
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import simplejson
 from django.contrib import messages
+from django.contrib.sites.models import get_current_site
 from django.conf import settings
 
 from jmbo_facebook.models import Page
@@ -11,7 +13,7 @@ from jmbo_facebook.models import Page
 
 @staff_member_required
 def handler(request):
-    path_info = context['request'].META['PATH_INFO']
+    path_info = request.META['PATH_INFO']
     redirect = HttpResponseRedirect(path_info)
 
     code = request.REQUEST.get('code')
@@ -30,9 +32,19 @@ def handler(request):
         client_secret=settings.JMBO_FACEBOOK['app_secret'],
         code=code
     )
-
     url = 'https://graph.facebook.com/oauth/access_token?client_id=%(client_id)s&redirect_uri=%(redirect_uri)s&client_secret=%(client_secret)s&code=%(code)s' \
         % di
+    try:
+        response = urllib2.urlopen(url)
+    except Exception, e:
+        # Blindly catch exceptions
+        msg = "Something went wrong. Headers: %s" % str(e.headers.items())
+        messages.error(request, msg, fail_silently=True)
+        return redirect
+
+    # Fetch pages
+    access_token = response.read().replace('access_token=', '')
+    url = 'https://graph.facebook.com/me/accounts?access_token' + access_token
     try:
         response = urllib2.urlopen(url)
     except Exception, e:
