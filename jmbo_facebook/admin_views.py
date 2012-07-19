@@ -13,8 +13,7 @@ from jmbo_facebook.models import Page
 
 @staff_member_required
 def handler(request):
-    path_info = request.META['PATH_INFO']
-    redirect = HttpResponseRedirect(path_info)
+    redirect = HttpResponseRedirect('/admin/jmbo_facebook/page')
 
     code = request.REQUEST.get('code')
     if not code:
@@ -44,7 +43,7 @@ def handler(request):
 
     # Fetch pages
     access_token = response.read().replace('access_token=', '')
-    url = 'https://graph.facebook.com/me/accounts?access_token' + access_token
+    url = 'https://graph.facebook.com/me/accounts?access_token=' + access_token
     try:
         response = urllib2.urlopen(url)
     except Exception, e:
@@ -59,7 +58,7 @@ def handler(request):
     # Create / update pages
     for di in json['data']:
         facebook_id = di['id']
-        page, dc = Page.objects.get_or_create(facebook_id=facebook_id).exists()
+        page, dc = Page.objects.get_or_create(facebook_id=facebook_id)
         page.title = di['name']
         page.access_token = di['access_token']
         page.save()
