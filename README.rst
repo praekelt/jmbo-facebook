@@ -10,7 +10,7 @@ Installation
 
 #. Install or add ``jmbo-facebook`` to your Python path.
 
-#. Add ``jmbo_facebok`` to your ``INSTALLED_APPS`` setting.
+#. Add ``jmbo_facebook`` to your ``INSTALLED_APPS`` setting.
 
 
 Usage
