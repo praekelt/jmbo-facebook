@@ -13,7 +13,7 @@ class Update(ModelBase):
     updates."""
     def __init__(self, update):
         # Copy attributes over
-        attrs = ('message', 'created_time', 'updated_time')
+        attrs = ('message', 'created_time', 'updated_time', 'from')
         for attr in attrs:            
             setattr(self, attr, update.get(attr))
 
