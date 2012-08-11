@@ -1,0 +1,16 @@
+{% load i18n jmbo_template_tags jmbo_twitter_tags %}
+
+<a href="https://facebook.com/{{ object.from.id }}">
+    <img src="https://graph.facebook.com/{{ object.from.id }}/picture" class="left" />
+</a>
+<div class="title">
+    <a href="https://facebook.com/{{ object.from.id }}">{{ object.from.name }}</a>    
+</div>
+<div class="meta">
+    <div class="byline">
+        {% humanize_time_diff object.created_time _('ago') %}
+    </div>
+    <div class="description">
+        {{ object.message|tweetify }}
+    </div>        
+</div>
