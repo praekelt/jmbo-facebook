@@ -6,11 +6,11 @@
 <div class="title">
     <a href="https://facebook.com/{{ object.from.id }}">{{ object.from.name }}</a>    
 </div>
+<div class="description">
+    {{ object.message|tweetify }}
+</div> 
 <div class="meta">
     <div class="byline">
         {% humanize_time_diff object.created_time _('ago') %}
     </div>
-    <div class="description">
-        {{ object.message|tweetify }}
-    </div>        
 </div>
