@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='jmbo-facebook',
-    version='0.1.1',
+    version='0.1.2',
     description='Fetch facebook page updates.',
     long_description=(open('README.rst', 'r').read() +
                         open('AUTHORS.rst', 'r').read() +
