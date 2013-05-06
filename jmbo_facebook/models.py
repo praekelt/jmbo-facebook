@@ -46,7 +46,8 @@ class Page(ModelBase):
         else:
             json = simplejson.loads(response.read())
             for di in json['data']:
-                if di['type'] != 'status': continue
+                if di['type'] not in ('status', 'photo'): continue
+                if di['from']['id'] != self.facebook_id: continue
                 if not di.get('message'): continue
                 di['created_time'] = datetime.datetime.strptime(
                     di['created_time'], '%Y-%m-%dT%H:%M:%S+0000'
