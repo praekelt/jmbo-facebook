@@ -1,0 +1,34 @@
+[   
+    {
+        "pk": null, 
+        "model": "photologue.photosize", 
+        "fields": {
+            "name": "update_list_item_thumbnail_basic", 
+            "watermark": null, 
+            "increment_count": false, 
+            "effect": null, 
+            "crop": true, 
+            "height": 50, 
+            "width": 50, 
+            "upscale": false, 
+            "pre_cache": false, 
+            "quality": 90
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "photologue.photosize", 
+        "fields": {
+            "name": "update_list_item_thumbnail_smart", 
+            "watermark": null, 
+            "increment_count": false, 
+            "effect": null, 
+            "crop": true, 
+            "height": 50, 
+            "width": 50, 
+            "upscale": false, 
+            "pre_cache": false, 
+            "quality": 90
+        }
+    }
+]
