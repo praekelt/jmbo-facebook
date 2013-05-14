@@ -11,11 +11,13 @@ from jmbo.models import ModelBase
 class Update(ModelBase):
     """Purely a wrapper that allows us to use jmbo-foundry's listings for 
     updates."""
-    def __init__(self, update):
+    def __init__(self, update, page):
         # Copy attributes over
         attrs = ('message', 'created_time', 'updated_time', 'from')
         for attr in attrs:            
             setattr(self, attr, update.get(attr))
+        # Can't use the name 'page' since it has meaning to pagination
+        self.page_object = page
 
     @property
     def as_leaf_class(self):
@@ -71,6 +73,6 @@ class Page(ModelBase):
 
         result = []
         for update in self.fetch():
-            result.append(Update(update))
+            result.append(Update(update, page=self))
 
         return MyList(result)
