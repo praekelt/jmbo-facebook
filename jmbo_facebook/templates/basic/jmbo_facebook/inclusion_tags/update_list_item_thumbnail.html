@@ -1,7 +1,7 @@
 {% load i18n jmbo_template_tags jmbo_twitter_tags %}
 
 <div class="image">
-    <a href="https://facebook.com/{{ object.from.id }}">
+    <a href="https://facebook.com/{{ object.from.name }}">
         {% if object.page_object.image %}
             <img src="{{ object.page_object.get_update_list_item_thumbnail_url }}" alt="{{ object.title }}" />
         {% else %}
