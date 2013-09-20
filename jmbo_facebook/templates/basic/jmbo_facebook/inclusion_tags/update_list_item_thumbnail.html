@@ -1,9 +1,15 @@
 {% load i18n jmbo_template_tags jmbo_twitter_tags %}
 
 {% jmbocache 300 'update-list-item-thumbnail-inclusion' object.id %}
-    <a href="https://facebook.com/{{ object.from.id }}">
-        <img src="https://graph.facebook.com/{{ object.from.id }}/picture" class="left" />
-    </a>
+    <div class="image">
+        <a href="https://facebook.com/{{ object.from.id }}">
+            {% if object.page_object.image %}
+                <img src="{{ object.page_object.get_update_list_item_thumbnail_url }}" alt="{{ object.title }}" />
+            {% else %}
+                <img src="https://graph.facebook.com/{{ object.from.id }}/picture" />
+            {% endif %}
+        </a>
+    </div>
     <div class="title">
         <a href="https://facebook.com/{{ object.from.id }}">{{ object.from.name }}</a>
     </div>
