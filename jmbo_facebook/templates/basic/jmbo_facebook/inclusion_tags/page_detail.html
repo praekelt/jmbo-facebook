@@ -1,7 +1,8 @@
-{% load i18n jmbo_template_tags foundry_tags %}
+{% extends "jmbo/inclusion_tags/modelbase_detail.html" %}
+{% load jmbo_template_tags foundry_tags %}
 
-<div class="object-detail-inclusion page-detail-inclusion">
+{% block content %}
     <div class="updates">
         {% listing object.updates style='VerticalThumbnail' %}
     </div>
-</div>
+{% endblock %}

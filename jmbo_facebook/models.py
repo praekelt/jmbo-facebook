@@ -9,12 +9,12 @@ from jmbo.models import ModelBase
 
 
 class Update(ModelBase):
-    """Purely a wrapper that allows us to use jmbo-foundry's listings for 
+    """Purely a wrapper that allows us to use jmbo-foundry's listings for
     updates."""
     def __init__(self, update):
         # Copy attributes over
-        attrs = ('message', 'created_time', 'updated_time', 'from')
-        for attr in attrs:            
+        attrs = ('id', 'message', 'created_time', 'updated_time', 'from')
+        for attr in attrs:
             setattr(self, attr, update.get(attr))
 
     @property
@@ -56,7 +56,7 @@ class Page(ModelBase):
                     di['updated_time'], '%Y-%m-%dT%H:%M:%S+0000'
                 )
                 updates.append(di)
-             
+
         cache.set(cache_key, updates, 1200)
         return updates
 
